@@ -1,1 +1,201 @@
+<group name="synology,syslog,">
 
+  <rule id="100200" level="3">
+    <decoded_as>synology-system-ddns-registered</decoded_as>
+    <description>Synology DDNS registriert - IP $(srcip)</description>
+    <group>synology,network,ddns,</group>
+  </rule>
+
+  <rule id="100201" level="8">
+    <decoded_as>synology-system-email-failed</decoded_as>
+    <description>Synology E-Mail-Versand fehlgeschlagen - $(extra_data)</description>
+    <group>synology,mail,error,</group>
+  </rule>
+
+  <rule id="100202" level="7">
+    <decoded_as>synology-system-user-created</decoded_as>
+    <description>Synology Benutzer erstellt - $(user)</description>
+    <group>synology,user_management,configuration_change,</group>
+  </rule>
+
+  <rule id="100203" level="7">
+    <decoded_as>synology-system-user-added-group</decoded_as>
+    <description>Synology Benutzer $(user) zu Gruppe hinzugefügt - $(extra_data)</description>
+    <group>synology,user_management,group_change,</group>
+  </rule>
+
+  <rule id="100204" level="9">
+    <decoded_as>synology-system-password-changed</decoded_as>
+    <description>Synology Passwort geändert - Benutzer $(user)</description>
+    <group>synology,user_management,password_change,</group>
+  </rule>
+
+  <rule id="100205" level="8">
+    <decoded_as>synology-system-app-privilege</decoded_as>
+    <description>Synology App-Berechtigung geändert - Benutzer $(user), Aktion $(action)</description>
+    <group>synology,privilege_change,configuration_change,</group>
+  </rule>
+
+  <rule id="100206" level="5">
+    <decoded_as>synology-system-package-state</decoded_as>
+    <description>Synology Paketstatus geändert - $(action)</description>
+    <group>synology,package_management,</group>
+  </rule>
+
+  <rule id="100207" level="4">
+    <decoded_as>synology-system-service-bracket-state</decoded_as>
+    <description>Synology Dienststatus geändert - $(action)</description>
+    <group>synology,service_state,</group>
+  </rule>
+
+  <rule id="100208" level="4">
+    <decoded_as>synology-system-start-stop</decoded_as>
+    <description>Synology Systemdienst $(action)</description>
+    <group>synology,service_state,</group>
+  </rule>
+
+  <rule id="100209" level="5">
+    <decoded_as>synology-system-boot</decoded_as>
+    <description>Synology Systemstart erkannt</description>
+    <group>synology,system_boot,</group>
+  </rule>
+
+  <rule id="100210" level="10">
+    <decoded_as>synology-system-low-storage</decoded_as>
+    <description>Synology Speicherplatz niedrig - $(extra_data)</description>
+    <group>synology,storage,warning,</group>
+  </rule>
+
+  <rule id="100211" level="5">
+    <decoded_as>synology-system-update-complete</decoded_as>
+    <description>Synology Update abgeschlossen</description>
+    <group>synology,update,</group>
+  </rule>
+
+  <rule id="100212" level="6">
+    <decoded_as>synology-system-update-start-install</decoded_as>
+    <description>Synology Update-Installation gestartet - $(extra_data)</description>
+    <group>synology,update,</group>
+  </rule>
+
+  <rule id="100213" level="4">
+    <decoded_as>synology-system-update-download-finished</decoded_as>
+    <description>Synology Update-Download abgeschlossen - $(extra_data)</description>
+    <group>synology,update,</group>
+  </rule>
+
+  <rule id="100214" level="4">
+    <decoded_as>synology-system-scrubbing-start</decoded_as>
+    <description>Synology Scrubbing gestartet - $(action) $(extra_data)</description>
+    <group>synology,storage,maintenance,</group>
+  </rule>
+
+  <rule id="100215" level="4">
+    <decoded_as>synology-system-scrubbing-finished</decoded_as>
+    <description>Synology Scrubbing abgeschlossen - $(action) $(extra_data)</description>
+    <group>synology,storage,maintenance,</group>
+  </rule>
+
+  <rule id="100216" level="7">
+    <decoded_as>synology-system-ups</decoded_as>
+    <description>Synology UPS Status geändert - $(action)</description>
+    <group>synology,power,ups,</group>
+  </rule>
+
+  <rule id="100217" level="10">
+    <decoded_as>synology-system-battery-safe-shutdown</decoded_as>
+    <description>Synology Stromversorgungsereignis - $(extra_data)</description>
+    <group>synology,power,warning,</group>
+  </rule>
+
+  <rule id="100218" level="5">
+    <decoded_as>synology-system-lan-link</decoded_as>
+    <description>Synology Netzwerklink geändert - $(action) $(extra_data)</description>
+    <group>synology,network,link_state,</group>
+  </rule>
+
+  <rule id="100219" level="8">
+    <decoded_as>synology-system-external-ip-failed</decoded_as>
+    <description>Synology konnte externe IP nicht ermitteln</description>
+    <group>synology,network,error,</group>
+  </rule>
+
+  <rule id="100220" level="7">
+    <decoded_as>synology-system-primary-mail-changed</decoded_as>
+    <description>Synology primäre E-Mail-Adresse geändert - $(extra_data)</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100221" level="7">
+    <decoded_as>synology-system-smtp-username-changed</decoded_as>
+    <description>Synology SMTP-Benutzer geändert - $(extra_data)</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100222" level="6">
+    <decoded_as>synology-system-smtp-auth-required</decoded_as>
+    <description>Synology SMTP-Authentifizierung aktiviert</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100223" level="6">
+    <decoded_as>synology-system-smtp-ssl-changed</decoded_as>
+    <description>Synology SMTP-SSL geändert - $(extra_data)</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100224" level="6">
+    <decoded_as>synology-system-subject-prefix-changed</decoded_as>
+    <description>Synology Mail-Betreffpräfix geändert - $(extra_data)</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100225" level="6">
+    <decoded_as>synology-system-smtp-server-changed</decoded_as>
+    <description>Synology SMTP-Server geändert - $(extra_data)</description>
+    <group>synology,mail,configuration_change,</group>
+  </rule>
+
+  <rule id="100226" level="3">
+    <decoded_as>synology-system-cleared-notifications</decoded_as>
+    <description>Synology Benachrichtigungen gelöscht - $(user)</description>
+    <group>synology,notification,</group>
+  </rule>
+
+  <rule id="100227" level="5">
+    <decoded_as>synology-system-shared-folder-created</decoded_as>
+    <description>Synology Freigabe erstellt - $(extra_data)</description>
+    <group>synology,shared_folder,configuration_change,</group>
+  </rule>
+
+  <rule id="100228" level="5">
+    <decoded_as>synology-system-task-created</decoded_as>
+    <description>Synology geplanter Task erstellt - $(extra_data)</description>
+    <group>synology,task,configuration_change,</group>
+  </rule>
+
+  <rule id="100229" level="6">
+    <decoded_as>synology-system-ddns-toggle</decoded_as>
+    <description>Synology DDNS Update geändert - $(action)</description>
+    <group>synology,ddns,configuration_change,</group>
+  </rule>
+
+  <rule id="100230" level="6">
+    <decoded_as>synology-system-webdav-http-toggle</decoded_as>
+    <description>Synology WebDAV HTTP geändert - $(action) durch $(user)</description>
+    <group>synology,webdav,configuration_change,</group>
+  </rule>
+
+  <rule id="100231" level="6">
+    <decoded_as>synology-system-webdav-transferlog-toggle</decoded_as>
+    <description>Synology WebDAV Transferlog aktiviert durch $(user)</description>
+    <group>synology,webdav,configuration_change,</group>
+  </rule>
+
+  <rule id="100232" level="6">
+    <decoded_as>synology-system-countdown</decoded_as>
+    <description>Synology Countdown erkannt - $(action)</description>
+    <group>synology,shutdown,reboot,</group>
+  </rule>
+
+</group>
