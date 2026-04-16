@@ -1,0 +1,2 @@
+# wazuh
+Configurations for Wazuh
