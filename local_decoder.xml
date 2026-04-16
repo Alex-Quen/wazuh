@@ -1,1 +1,208 @@
 
+<!-- =========================
+     Synology System decoders
+     ========================= -->
+
+<decoder name="synology-system-ddns-registered">
+  <prematch>System successfully registered</prematch>
+  <regex type="pcre2">System successfully registered \[([0-9.]+)\] to \[([^\]]+)\] in DDNS server \[([^\]]+)\]\.</regex>
+  <order>srcip,extra_data,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-email-failed">
+  <prematch>Failed to send email.</prematch>
+  <regex type="pcre2">Failed to send email\. \((.*)\)\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-user-created">
+  <prematch>was created.</prematch>
+  <regex type="pcre2">User \[([^\]]+)\] was created\.</regex>
+  <order>user</order>
+</decoder>
+
+<decoder name="synology-system-user-added-group">
+  <prematch>was added to the group</prematch>
+  <regex type="pcre2">User \[([^\]]+)\] was added to the group \[([^\]]+)\]\.</regex>
+  <order>user,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-password-changed">
+  <prematch>Password of the user</prematch>
+  <regex type="pcre2">Password of the user \[([^\]]+)\] was changed\.</regex>
+  <order>user</order>
+</decoder>
+
+<decoder name="synology-system-app-privilege">
+  <prematch>The app privilege on app</prematch>
+  <regex type="pcre2">The app privilege on app \[([^\]]+)\] for user \[([^\]]+)\] was set to \[([^\]]+)\] from \[([^\]]+)\]\.</regex>
+  <order>extra_data,user,action,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-package-state">
+  <prematch>Package [</prematch>
+  <regex type="pcre2">Package \[([^\]]+)\] has been successfully (updated|repaired|installed)\.</regex>
+  <order>extra_data,action</order>
+</decoder>
+
+<decoder name="synology-system-service-bracket-state">
+  <prematch>service was</prematch>
+  <regex type="pcre2">\[([^\]]+)\] service was (started|stopped)\.</regex>
+  <order>extra_data,action</order>
+</decoder>
+
+<decoder name="synology-system-start-stop">
+  <prematch>System successfully </prematch>
+  <regex type="pcre2">System successfully (started|stopped) \[([^\]]+)\]\.</regex>
+  <order>action,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-boot">
+  <prematch>System started to boot up.</prematch>
+  <regex type="pcre2">System started to boot up\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-low-storage">
+  <prematch>Detected low storage space on Volume</prematch>
+  <regex type="pcre2">Detected low storage space on Volume \[([^\]]+)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-update-complete">
+  <prematch>Update was complete.</prematch>
+  <regex type="pcre2">Update was complete\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-update-start-install">
+  <prematch>Start install [</prematch>
+  <regex type="pcre2">Start install \[([^\]]+)\] automatically\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-update-download-finished">
+  <prematch>Download task for [</prematch>
+  <regex type="pcre2">Download task for \[([^\]]+)\] finished\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-scrubbing-start">
+  <prematch>System starts </prematch>
+  <regex type="pcre2">System starts (filesystem scrubbing|data scrubbing) on \[([^\]]+)\]\.</regex>
+  <order>action,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-scrubbing-finished">
+  <prematch>System successfully finished</prematch>
+  <regex type="pcre2">System successfully finished (filesystem scrubbing|data scrubbing) on \[([^\]]+)\]\.</regex>
+  <order>action,extra_data</order>
+</decoder>
+
+<decoder name="synology-system-ups">
+  <prematch>The UPS was</prematch>
+  <regex type="pcre2">The UPS was (connected|disconnected)\.</regex>
+  <order>action</order>
+</decoder>
+
+<decoder name="synology-system-battery-safe-shutdown">
+  <prematch>Server </prematch>
+  <regex type="pcre2">Server (is on battery|going to Safe Shutdown)\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-lan-link">
+  <prematch>link </prematch>
+  <regex type="pcre2">\[([^\]]+)\] link (up|down)\.</regex>
+  <order>extra_data,action</order>
+</decoder>
+
+<decoder name="synology-system-external-ip-failed">
+  <prematch>System failed to get External IP.</prematch>
+  <regex type="pcre2">System failed to get External IP\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-primary-mail-changed">
+  <prematch>Primary e-mail address was changed</prematch>
+  <regex type="pcre2">Primary e-mail address was changed to \[([^\]]+)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-smtp-username-changed">
+  <prematch>SMTP Username was changed to</prematch>
+  <regex type="pcre2">SMTP Username was changed to \[([^\]]+)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-smtp-auth-required">
+  <prematch>SMTP authentication is required.</prematch>
+  <regex type="pcre2">SMTP authentication is required\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-smtp-ssl-changed">
+  <prematch>SMTP ssl connection was changed</prematch>
+  <regex type="pcre2">SMTP ssl connection was changed to \[([^\]]+)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-subject-prefix-changed">
+  <prematch>Subject Prefix string was changed to</prematch>
+  <regex type="pcre2">Subject Prefix string was changed to \[(.*)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-smtp-server-changed">
+  <prematch>SMTP server was changed to</prematch>
+  <regex type="pcre2">SMTP server was changed to \[([^\]]+)\]\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-cleared-notifications">
+  <prematch>Cleared [</prematch>
+  <regex type="pcre2">Cleared \[([^\]]+)\] all notifications successfully\.</regex>
+  <order>user</order>
+</decoder>
+
+<decoder name="synology-system-shared-folder-created">
+  <prematch>Normal shared folder</prematch>
+  <regex type="pcre2">Normal shared folder \[([^\]]+)\] was created\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-task-created">
+  <prematch>Scheduled Task [</prematch>
+  <regex type="pcre2">Scheduled Task \[([^\]]+)\] was created\.</regex>
+  <order>extra_data</order>
+</decoder>
+
+<decoder name="synology-system-ddns-toggle">
+  <prematch>DDNS update.</prematch>
+  <regex type="pcre2">System successfully (enabled|disabled) DDNS update\.</regex>
+  <order>action</order>
+</decoder>
+
+<decoder name="synology-system-webdav-http-toggle">
+  <prematch>WebDAV HTTP</prematch>
+  <regex type="pcre2">System successfully (enabled|disabled) WebDAV HTTP by \[([^\]]+)\] user\.</regex>
+  <order>action,user</order>
+</decoder>
+
+<decoder name="synology-system-webdav-transferlog-toggle">
+  <prematch>WebDAV transfer log</prematch>
+  <regex type="pcre2">System successfully enabled WebDAV transfer log by \[([^\]]+)\] user\.</regex>
+  <order>user</order>
+</decoder>
+
+<decoder name="synology-system-countdown">
+  <prematch>counting down to</prematch>
+  <regex type="pcre2">(System|Server) started counting down to (reboot|shutdown)\.</regex>
+  <order>extra_data,action</order>
+</decoder>
+
+<decoder name="synology-system-catchall">
+  <prematch>System |Package \[|User \[|The app privilege on app |\[LAN |Server </prematch>
+  <regex type="pcre2">(.*)</regex>
+  <order>extra_data</order>
+</decoder>
