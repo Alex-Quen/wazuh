@@ -206,3 +206,9 @@
   <regex type="pcre2">(.*)</regex>
   <order>extra_data</order>
 </decoder>
+
+<decoder name="synology-system-catchall">
+  <prematch type="pcre2">User \[|System |Package \[|Event: |SMB|FTP|WebDAV|AFP|TFTP|backup|Backup|Hyper Backup|Active Backup|CIFS</prematch>
+  <regex type="pcre2">(.*)</regex>
+  <order>extra_data</order>
+</decoder>
