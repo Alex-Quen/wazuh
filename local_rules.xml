@@ -198,4 +198,11 @@
     <group>synology,shutdown,reboot,</group>
   </rule>
 
+  <rule id="100299" level="1">
+  <decoded_as>synology-system-catchall</decoded_as>
+  <description>Synology unbekannter Log: $(extra_data)</description>
+  <group>synology,unknown,</group>
+  </rule>
+  
+
 </group>
