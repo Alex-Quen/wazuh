@@ -164,7 +164,7 @@
 </group>
 
 <!-- =========================
-     Synology Drive decoders
+     Synology Drive rules
      ========================= -->
 
 <group name="synology_drive,">
@@ -301,5 +301,20 @@
     <match>Response is an empty array</match>
     <description>Synology Drive Auto-Updater: kein Update verfügbar oder leere Antwort</description>
   </rule>
+
+<rule id="100590" level="10">
+  <match>SYNODRIVE_INACTIVE</match>
+  <description>Synology Drive vermutlich pausiert oder inaktiv</description>
+</rule>
+
+<rule id="100591" level="3">
+  <match>SYNODRIVE_OK</match>
+  <description>Synology Drive aktiv</description>
+</rule>
+
+<rule id="100592" level="6">
+  <match>SYNODRIVE_ERROR</match>
+  <description>Keine Synology Drive Logs gefunden</description>
+</rule>
 
 </group>
