@@ -162,3 +162,144 @@
   </rule>
 
 </group>
+
+<!-- =========================
+     Synology Drive decoders
+     ========================= -->
+
+<group name="synology_drive,">
+
+  <rule id="100500" level="0">
+    <decoded_as>synology-drive</decoded_as>
+    <description>Synology Drive Client Log</description>
+  </rule>
+
+  <!-- Generische Fehler niedrig halten -->
+  <rule id="100501" level="3">
+    <if_sid>100500</if_sid>
+    <field name="synology.drive.level">ERROR</field>
+    <description>Synology Drive allgemeiner Fehler</description>
+  </rule>
+
+  <rule id="100502" level="2">
+    <if_sid>100500</if_sid>
+    <field name="synology.drive.level">WARNING</field>
+    <description>Synology Drive Warnung</description>
+  </rule>
+
+  <!-- Verbindung / Sync kritisch -->
+  <rule id="100510" level="10">
+    <if_sid>100500</if_sid>
+    <match>Failed to find connection</match>
+    <description>Synology Drive kann keine Verbindung zur Synology herstellen</description>
+  </rule>
+
+  <rule id="100511" level="9">
+    <if_sid>100500</if_sid>
+    <match>failed to connect to server</match>
+    <description>Synology Drive Verbindung zum Server fehlgeschlagen</description>
+  </rule>
+
+  <rule id="100512" level="9">
+    <if_sid>100500</if_sid>
+    <match>channel error while connecting to server</match>
+    <description>Synology Drive Channel-Fehler beim Verbindungsaufbau</description>
+  </rule>
+
+  <rule id="100513" level="8">
+    <if_sid>100500</if_sid>
+    <match>failed to get server info</match>
+    <description>Synology Drive QuickConnect/Server-Info konnte nicht abgerufen werden</description>
+  </rule>
+
+  <rule id="100514" level="8">
+    <if_sid>100500</if_sid>
+    <match>Couldn't resolve host name</match>
+    <description>Synology Drive DNS-Auflösung fehlgeschlagen</description>
+  </rule>
+
+  <!-- SSL / Zertifikat -->
+  <rule id="100520" level="10">
+    <if_sid>100500</if_sid>
+    <match>SSL peer certificate or SSH remote key was not OK</match>
+    <description>Synology Drive SSL-Zertifikatsprüfung fehlgeschlagen</description>
+  </rule>
+
+  <rule id="100521" level="10">
+    <if_sid>100500</if_sid>
+    <match>ERR_SSL_VERIFY_FAIL</match>
+    <description>Synology Drive SSL Verify fehlgeschlagen</description>
+  </rule>
+
+  <!-- Auth -->
+  <rule id="100530" level="10">
+    <if_sid>100500</if_sid>
+    <match>Invalid password</match>
+    <description>Synology Drive Anmeldung fehlgeschlagen: falsches Passwort</description>
+  </rule>
+
+  <rule id="100531" level="7">
+    <if_sid>100500</if_sid>
+    <match>Requires OTP</match>
+    <description>Synology Drive Anmeldung benötigt OTP</description>
+  </rule>
+
+  <!-- Laufender Sync verliert Verbindung -->
+  <rule id="100540" level="9">
+    <if_sid>100500</if_sid>
+    <match>Failed to send/recv long poll request</match>
+    <description>Synology Drive Long-Poll-Verbindung fehlgeschlagen</description>
+  </rule>
+
+  <rule id="100541" level="8">
+    <if_sid>100500</if_sid>
+    <match>Failed to long poll event</match>
+    <description>Synology Drive Event-Abfrage fehlgeschlagen, Fallback aktiv</description>
+  </rule>
+
+  <rule id="100542" level="8">
+    <if_sid>100500</if_sid>
+    <match>bio error is set to -2</match>
+    <description>Synology Drive Netzwerk-/TLS-Streamfehler</description>
+  </rule>
+
+  <!-- Datei-/Sync-Fehler -->
+  <rule id="100550" level="8">
+    <if_sid>100500</if_sid>
+    <match>Failed to prepare file block</match>
+    <description>Synology Drive konnte Datei nicht für Upload vorbereiten</description>
+  </rule>
+
+  <rule id="100551" level="8">
+    <if_sid>100500</if_sid>
+    <match>Failed to read file</match>
+    <description>Synology Drive konnte lokale Datei nicht lesen</description>
+  </rule>
+
+  <rule id="100552" level="5">
+    <if_sid>100500</if_sid>
+    <match>blocked by common filter</match>
+    <description>Synology Drive Datei durch Filterregel blockiert</description>
+  </rule>
+
+  <!-- Lokale DB / Client beschädigt -->
+  <rule id="100560" level="9">
+    <if_sid>100500</if_sid>
+    <match>cannot get next</match>
+    <description>Synology Drive lokale Datenbank/Session-Tabelle fehlerhaft</description>
+  </rule>
+
+  <!-- Auto-Updater nur niedrig -->
+  <rule id="100570" level="3">
+    <if_sid>100500</if_sid>
+    <match>Fail to run auto update</match>
+    <description>Synology Drive Auto-Update fehlgeschlagen</description>
+  </rule>
+
+  <rule id="100571" level="2">
+    <if_sid>100500</if_sid>
+    <match>Response is an empty array</match>
+    <description>Synology Drive Auto-Updater: kein Update verfügbar oder leere Antwort</description>
+  </rule>
+
+</group>
