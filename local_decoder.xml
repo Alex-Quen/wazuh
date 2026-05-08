@@ -3,12 +3,12 @@
      ========================= -->
 
 <decoder name="synology-drive">
-  <prematch>^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d</prematch>
+  <prematch type="pcre2">^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}</prematch>
 </decoder>
 
 <decoder name="synology-drive-fields">
   <parent>synology-drive</parent>
-  <regex>^(\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d) \(\s*(\d+):\s*(\d+)\) \[(\w+)\] ([^:]+): (.*)</regex>
+  <regex type="pcre2">^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}) \(\s*(\d+):\s*(\d+)\) \[([A-Z]+)\] ([^:]+): (.*)$</regex>
   <order>synology.drive.timestamp,synology.drive.pid,synology.drive.tid,synology.drive.level,synology.drive.source,synology.drive.message</order>
 </decoder>
 
